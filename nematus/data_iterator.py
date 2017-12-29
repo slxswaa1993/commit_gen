@@ -128,7 +128,24 @@ class TextIterator:
                     break
                 tmp = []
                 for w in ss:
-                    w = [self.source_dicts[i][f] if f in self.source_dicts[i] else 1 for (i,f) in enumerate(w.split('|'))]
+                    # dbg
+                    # dbgw = []
+                    # for (i,f) in enumerate(w.split('|')):
+                    #     if f in self.source_dicts[i]:
+                    #         dbgtmp = self.source_dicts[i][f]
+                    #     else:
+                    #         dbgtmp = 1
+                    #     dbgw.append(dbgtmp)
+                    # end
+
+                    # original code
+                    # w = [self.source_dicts[i][f] if f in self.source_dicts[i] else 1 for (i,f) in enumerate(w.split('|'))]
+                    # end
+
+                    # fix
+                    w = [self.source_dicts[i][f] if f in self.source_dicts[i] else 1 for (i,f) in enumerate([w])]
+                    # end
+                    
                     tmp.append(w)
                 ss = tmp
 

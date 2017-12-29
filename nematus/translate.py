@@ -168,7 +168,14 @@ def main(models, source_file, saveto, save_alignment=None, k=5,
 
             x = []
             for w in words:
-                w = [word_dicts[i][f] if f in word_dicts[i] else 1 for (i,f) in enumerate(w.split('|'))]
+                
+                # original code 
+                # w = [word_dicts[i][f] if f in word_dicts[i] else 1 for (i,f) in enumerate(w.split('|'))]
+                # end
+
+                # fix
+                w = [word_dicts[i][f] if f in word_dicts[i] else 1 for (i,f) in enumerate([w])]
+                # end
                 if len(w) != options[0]['factors']:
                     sys.stderr.write('Error: expected {0} factors, but input word has {1}\n'.format(options[0]['factors'], len(w)))
                     for midx in xrange(n_process):
